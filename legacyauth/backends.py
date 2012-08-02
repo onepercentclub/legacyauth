@@ -1,10 +1,11 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.contrib.auth.backends import ModelBakend
 from django.contrib.auth.models import User
 
 
-class EmailBackend(object):
+class EmailBackend(ModelBakend):
     """
     Email Authentication Backend
 
@@ -14,7 +15,7 @@ class EmailBackend(object):
     Warning: by default, Django's User model has no index on email. Perhaps
     monkey-patch this onto the User model?
 
-    Source: http://www.micahcarrick.com/django-email-authentication.html
+    Ref: http://www.micahcarrick.com/django-email-authentication.html
     """
 
     def authenticate(self, username=None, password=None):
@@ -24,15 +25,6 @@ class EmailBackend(object):
             user = User.objects.get(email=username)
             if user.check_password(password):
                 return user
-
-        except User.DoesNotExist:
-            return None
-
-    def get_user(self, user_id):
-        """ Get a User object from the user_id. """
-
-        try:
-            return User.objects.get(pk=user_id)
 
         except User.DoesNotExist:
             return None
