@@ -1,11 +1,11 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from django.contrib.auth.backends import ModelBakend
+from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import User
 
 
-class EmailBackend(ModelBakend):
+class EmailBackend(ModelBackend):
     """
     Email Authentication Backend
 
