@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='legacyauth',
-    version='0.1',
+    version='0.2.0',
     author='1%CLUB',
     author_email='info@1procentclub.nl',
     packages=find_packages(),
